@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Viewer</title>
+    <style>
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
+    <script>
+        //-=--------------------------------------------------------------------
+        // Event handler zone
+        //-=--------------------------------------------------------------------
+        function mouseOverHandler() {
+            //1. 객체 선택 (id=target)객체를 가져온다.
+            document.getElementById("target").src = this.src;
+            //2. target의 src 속성값을 변경한다. (이벤트가 발생한 객체 자신의 src 속성값으로)
+            //target.src = this.src;
+
+            let fn = document.getElementById("filename");
+            let words = this.src.split("/");
+            fn.innerHTML = words[words.length-1].split(".")[0];
+        }
+        //------------------------------------
+        function attachEventHandler() {
+            // img.icon 객체들 각각의 onmouseover 이벤트에 핸들러를 연결한다.
+            let iconArray = document.getElementsByClassName("icon");
+            for(let icon of iconArray) {
+                icon.addEventListener("mouseover", mouseOverHandler);
+            }
+        }
+        //-=--------------------------------------------------------------------
+        window.onload = function() {
+            attachEventHandler();
+        }
+        //-=--------------------------------------------------------------------
+    </script>
+</head>
+<body>
+    <h1>Image Browser</h1>
+    <hr>
+    <div class="container">
+        <img id="target" src="./image/bank.png" alt=""><br>
+        <span id="filename">sample.png</span>
+    </div>
+    <hr>
+    <div class="container">
+        <img class="icon" src="./image/bank.png" alt="">
+        <img class="icon" src="./image/business.png" alt="">
+        <img class="icon" src="./image/shop.png" alt="">
+        <img class="icon" src="./image/tree.png" alt="">
+        <img class="icon" src="./image/truck.png" alt="">
+    </div>
+</body>
+</html>

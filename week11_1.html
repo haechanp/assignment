@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td, th {
+            border: 1px solid gray;
+        }
+        span.blue {
+            color: blue;
+        }
+        span.red {
+            color: red;
+        }
+    </style>
+    <script>
+        // my object 
+        let o = { name: "홍길동",  age: "24세", 국적:"대한민국", "사는 곳": "부산시 부산진구 양정동"};
+        // window객체의 모든 속성 이름 확인하기
+        let count = 1;
+        let obj = window;
+        document.write("<table><thead><tr><th>No</th><th>속성명</th><th>속성값</th></tr></thead><tbody>")
+        for(let key in obj) {
+            document.write("<tr>");
+            if (typeof(obj[key]) == 'function')
+                document.write(`<td>${count++}</td> <td><span class="red"><b>${key}</b></span></td><td><span class="blue">${obj[key]}</span></td>`);
+            else
+                document.write(`<td>${count++}</td> <td><b>${key}</b></td><td><span class="blue">${obj[key]}</span></td>`);
+            document.write("</tr>");
+        }
+        document.write("</tbody></table>")
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

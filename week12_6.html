@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 이동 제어</title>
+    <style>
+        div {
+            border: 1px solid blue;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            position: absolute; /* left, top에서 지정한 위치로 이동시키기 위해 필요한 설정 */
+            left: 300px;
+            top: 300px;
+        }
+    </style>
+    <script>
+        //---------------------------------------------------------------------
+        function gid(id) { return document.getElementById(id); }
+        //---------------------------------------------------------------------
+
+        let divLeft = 300;
+        let divTop = 300;
+
+        let moveLeft = function() {
+            // 1. 이동시킬 좌표값부터 수정.
+            divLeft -= 50;
+            // 2. 수정된 좌표값으로 해당 객체 스타일의 속성값을 수정.
+            document.querySelector("div").style.left = divLeft + "px";
+        }
+        let moveRight = function() {
+            // 1. 이동시킬 좌표값부터 수정.
+            divLeft += 50;
+            // 2. 수정된 좌표값으로 해당 객체 스타일의 속성값을 수정.
+            document.querySelector("div").style.left = divLeft + "px";
+        }
+
+        //---------------------------------------------------------------------
+        window.onload  = function() {
+            gid("btnLeft").addEventListener("click", moveLeft);
+            gid("btnRight").addEventListener("click", moveRight);
+        }
+    </script>
+</head>
+<body>
+    <h1>DIV Moving Control</h1>
+    <hr>
+    <button id="btnLeft">Left</button>
+    <button id="btnRight">Right</button>
+    <hr>
+    <div>Javascript</div>
+</body>
+</html>
